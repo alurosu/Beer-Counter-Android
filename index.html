@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Beer Counter</title>
+
+	<script type="text/javascript" src="phonegap.js"></script>
+
+	<link rel="stylesheet" href="data/css/jquery.mobile.css" />
+	<link rel="stylesheet" href="data/css/main.css" />
+
+	<script type="text/javascript" src="data/js/jquery.js"></script>
+	<script type="text/javascript" src="data/js/jquery.mobile.js"></script>
+	<script type="text/javascript" src="data/js/main.js"></script>
+</head>
+
+<body onload="onDeviceReady()">  
+  <div data-role="page" id="main">
+  	<div data-role="header">
+		<img src="data/img/menu.png" alt="Menu" class="menuTrigger" />
+    </div><!-- /header -->
+    
+    <div role="main" class="ui-content" id="tableWrap">
+		<div id="counter">0</div>
+		<div id="totalPrice"></div>
+		<table id="instructions">
+			<tr>
+			  <td id="notification">
+				Tap the circle after each beer. <span class="author">Beer Counter</span>
+			  </td>
+			</tr>
+		</table>
+    </div><!-- /content -->
+    
+    <div data-role="panel" id="menu" data-position="right" data-display="overlay">
+		<div data-role="content">
+			<ul>
+				<li><a href="#history" data-transition="slide">History</a></li>
+				<li><a href="#dialog" id="openDialog">Clear counter</a></li>
+				<li><a href="#settings" data-transition="slide">Settings</a></li>
+				<li><a href="#gopro">Donate</a></li>
+			
+				<li id="lastMenuItem">Close panel</li>
+			</ul>
+		</div>
+    </div><!-- /panel -->
+  </div><!-- /main -->
+  
+  <div data-role="page" id="history">
+  	<div data-role="header">
+        <a href="#main" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">back</a>
+        <h1>Drinking history</h1>
+    </div><!-- /header -->
+    
+    <div role="main" class="ui-content">
+   		<ul id="historyList">
+      </ul>
+    </div><!-- /content -->
+  </div><!-- /history -->
+  
+  <div data-role="page" id="settings">
+  	<div data-role="header">
+        <a href="#main" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">back</a>
+        <h1>Settings</h1>
+    </div><!-- /header -->
+    
+    <div role="main" class="ui-content">
+    	<ul id="settingsList">
+      	<li id="vibrationsWrap">
+          <input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="vibrations">
+        	<div class="title">Vibrations</div>
+          <p>Turn on/off the vibrations when counting.</p>
+        </li>
+      	<li id="sound">
+        	<div class="title">Sound</div>
+        	<form>
+            <fieldset data-role="controlgroup" data-iconpos="right">
+                <legend>Select what sound you want when counting.</legend>
+                <input type="checkbox" name="sound1" id="checkbox-h-6a" value="">
+                <label for="checkbox-h-6a">No sound</label>
+                <input type="checkbox" name="sound2" id="checkbox-h-6b" value="data/sounds/canOpen.mp3">
+                <label for="checkbox-h-6b">Open beer</label>
+                <input type="checkbox" name="sound3" id="checkbox-h-6c" value="data/sounds/pourBeer.mp3">
+                <label for="checkbox-h-6c">Pour Beer</label>
+                <input type="checkbox" name="sound4" id="checkbox-h-6d" value="data/sounds/manBurp.mp3">
+                <label for="checkbox-h-6d">Burp</label>
+            </fieldset>
+          </form>
+        </li>
+        <li>
+        	<div class="title">Beer price</div>
+          <p>Beer Counter will automatically add up how much you spend. Below you can set how much a beer costs.</p>
+          <p>
+          	<div class="ui-field-contain">
+                <label for="textinput-fc">Units:</label>
+                <input type="text" name="priceUnit" id="priceUnit" value="1.5">
+            </div>
+            <div class="ui-field-contain">
+                <label for="priceCurrency">Currency:</label>
+                <select name="priceCurrency" id="priceCurrency">
+                  <option value="€">€ - Euro</option>
+                  <option value="$">$ - USD</option>
+                  <option value="£">£ - Pound</option>
+                </select>
+            </div>
+          </p>
+        </li>
+        <li>
+        	<div class="title">History</div>
+          <p>This is the place where you can delete all your data. You can't recover any information once it's deleted.</p>
+          <p style="text-align:center;">
+          	<a href="javascript: deleteHistory();" class="ui-btn ui-btn-inline ui-icon-alert ui-btn-icon-right" id="deleteHistory">Delete history</a>
+          </p>
+        </li>
+      </ul>
+    </div><!-- /content -->
+  </div><!-- /settings -->
+  
+  <div data-role="dialog" id="dialog">
+  	<div data-role="header">
+        <h1>Want to save?</h1>
+    </div><!-- /header -->
+    
+    <div role="main" class="ui-content">
+		<p>If you want to add the current number of beers into your drinking history, enter a time and place in the input below.</p>
+		<p><input type="text" id="saveName" /></p>
+		<div style="text-align: right;">
+			<a href="javascript: clearCounter();" class="ui-btn ui-btn-inline">Just clear</a>
+			<a href="javascript: saveCounter();" class="ui-btn ui-btn-inline">Save</a>
+		</div>
+    </div><!-- /content -->
+  </div><!-- /dialog -->
+  
+</body>
+</html>

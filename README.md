@@ -1,1 +1,1 @@
-# Beer-Counter-Android
+# Beer Counter - Android

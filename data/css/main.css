@@ -1,0 +1,198 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	outline: 0px;
+}
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+li {
+	list-style: none;
+}
+[data-role="header"] {
+	min-height: 40px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+[data-role="header"] a {
+	border-radius: 100%;
+	background-color: transparent !important;
+	border-color: #A16F00 !important;
+}
+.menuTrigger {
+	float: right;
+	margin: 11px;
+	cursor: pointer;
+}
+#menu {
+	background: #e79f00;
+}
+#menu ul {
+	padding-top: 10px;
+}
+#menu a, #lastMenuItem {
+	display:block;
+	padding: 15px 20px;
+	text-decoration: none;
+	color: #046d4c;
+	text-shadow: none;
+	background: #fff;
+	margin-bottom: 2px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 20px;
+}
+#lastMenuItem {
+	position: absolute;
+	width: 100%;
+	bottom: 10px;
+}
+
+#main {
+	height: 100%;
+	padding: 0;
+}
+#main #tableWrap {
+	height: 100%;
+	padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+#counter {
+	font-size: 100px;
+	color: #046d4c;
+	text-align: center;
+	
+	width: 175px;
+	height: 200px;
+	cursor: pointer;
+	padding-top: 15px;
+	margin: auto auto 0px auto;
+	background: url(../img/button.png) no-repeat;
+	
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.author {
+	color: #053f2d;
+	font-weight: bold;
+}
+#totalPrice {
+	text-align: center;
+	
+	margin-top: -45px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+	
+    height: 15px;
+    color: #333;
+    background: #fff;
+    border-radius: 50px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+}	
+#totalPrice span {
+	color: #046d4c;
+    text-shadow: none;
+}
+
+#instructions {
+	width: 300px;
+	height: 102px;
+	margin: 0px auto auto auto;
+	background: url(../img/quote.png) no-repeat;
+	color: white;
+	text-align: center;
+}
+#notification {
+    padding: 10px 24px;
+}
+
+#historyList, #settingsList {
+	padding-top: 26px;
+}
+#historyList li, #settingsList li {
+	padding: 15px;
+	background: white;
+	margin-bottom: 2px;
+}
+#historyList li .title, #settingsList li .title {
+	color: #046d4c;
+	font-weight: bold;
+}
+#history .ui-content, #settings .ui-content {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#dialog .ui-btn-icon-notext.ui-btn-left {
+	left: auto;
+	right: 10px;
+}
+
+#vibrationsWrap .ui-flipswitch {
+	float: right;
+	background: #046d4c;
+}
+
+#history .ui-content, #settings .ui-content {
+	padding-bottom: 0;
+}
+#externalLink {
+	background: #046d4c;
+	padding: 10px;
+	display: block;
+	width: 130px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	margin: 10px auto;
+	border-radius: 5px;
+}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	text-shadow: none;
+}
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
+	background: #e79f00;
+	text-shadow: none;
+	border: none;
+}
+.ui-header .ui-title, .ui-footer .ui-title {
+	font-weight: normal;
+	color: #fff;
+	text-overflow: clip;
+}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	background: url(../img/bg.png) repeat-x #fdc200;
+    background-size: 100% 100%;
+}
+.ui-dialog-contain {
+	background: #fdc200;
+}
+.ui-panel-inner, .ui-panel-inner .ui-content, .ui-panel-inner ul {
+	padding: 0;
+}
+.ui-flipswitch-off {
+	color: white;
+}
+.ui-icon-check:after, html .ui-btn.ui-checkbox-on.ui-checkbox-on:after {
+	background-color: #046d4c;
+}
+
+#myAds {
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
