@@ -39,9 +39,10 @@
 				<li><a href="#history" data-transition="slide">History</a></li>
 				<li><a href="#dialog" id="openDialog">Clear counter</a></li>
 				<li><a href="#settings" data-transition="slide">Settings</a></li>
-				<li><a href="#gopro">Donate</a></li>
 			
-				<li id="lastMenuItem">Close panel</li>
+				<li id="lastMenuItem">
+					<a href="#gopro">Donate</a>
+				</li>
 			</ul>
 		</div>
     </div><!-- /panel -->
@@ -68,9 +69,9 @@
     <div role="main" class="ui-content">
     	<ul id="settingsList">
       	<li id="vibrationsWrap">
-          <input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="vibrations">
-        	<div class="title">Vibrations</div>
-          <p>Turn on/off the vibrations when counting.</p>
+			<input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="vibrations">
+			<div class="title">Vibrations</div>
+			<p>Turn on/off the vibrations when counting.</p>
         </li>
       	<li id="sound">
         	<div class="title">Sound</div>
@@ -89,22 +90,22 @@
           </form>
         </li>
         <li>
-        	<div class="title">Beer price</div>
-          <p>Beer Counter will automatically add up how much you spend. Below you can set how much a beer costs.</p>
-          <p>
-          	<div class="ui-field-contain">
-                <label for="textinput-fc">Units:</label>
-                <input type="text" name="priceUnit" id="priceUnit" value="1.5">
-            </div>
-            <div class="ui-field-contain">
-                <label for="priceCurrency">Currency:</label>
-                <select name="priceCurrency" id="priceCurrency">
-                  <option value="€">€ - Euro</option>
-                  <option value="$">$ - USD</option>
-                  <option value="£">£ - Pound</option>
-                </select>
-            </div>
-          </p>
+			<div class="title">Beer price</div>
+			<p>Beer Counter will automatically add up how much you spend. Below you can set how much a beer costs.</p>
+			<p>
+			<div class="ui-field-contain">
+				<label for="textinput-fc">Units:</label>
+				<input type="text" name="priceUnit" id="priceUnit" value="1.5">
+			</div>
+			<div class="ui-field-contain">
+				<label for="priceCurrency">Currency:</label>
+				<select name="priceCurrency" id="priceCurrency">
+				  <option value="€">€ - Euro</option>
+				  <option value="$">$ - USD</option>
+				  <option value="£">£ - Pound</option>
+				</select>
+			</div>
+			</p>
         </li>
         <li>
         	<div class="title">History</div>

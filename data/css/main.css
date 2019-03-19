@@ -33,7 +33,7 @@ li {
 #menu ul {
 	padding-top: 10px;
 }
-#menu a, #lastMenuItem {
+#menu a {
 	display:block;
 	padding: 15px 20px;
 	text-decoration: none;

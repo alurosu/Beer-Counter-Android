@@ -64,9 +64,7 @@ function onDeviceReady() {
 	updateTotal();
 }
 
-$(document).ready(function(e) {
-	// localStorage.clear();
-	
+$(document).ready(function(e) {	
 	// panel functions
 	$('#main').on("swipeleft", function(e) {
 		$("#menu").panel("open");
@@ -78,10 +76,6 @@ $(document).ready(function(e) {
 	
 	$('.menuTrigger').on("click",function(e) {
 		$("#menu").panel("open");
-	});
-	
-	$('#lastMenuItem').on("click",function(e) {
-		$("#menu").panel("close");
 	});
 	
 	// other funtions
