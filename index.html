@@ -36,9 +36,9 @@
     <div data-role="panel" id="menu" data-position="right" data-display="overlay">
 		<div data-role="content">
 			<ul>
-				<li><a href="#history" data-transition="slide">History</a></li>
+				<li><a href="#history" data-transition="fade">History</a></li>
 				<li><a href="#dialog" id="openDialog">Save / Clear</a></li>
-				<li><a href="#settings" data-transition="slide">Settings</a></li>
+				<li><a href="#settings" data-transition="fade">Settings</a></li>
 			
 				<li id="lastMenuItem">
 					<a href="#gopro">Donate</a>
@@ -50,19 +50,20 @@
   
   <div data-role="page" id="history">
   	<div data-role="header">
-        <a href="#main" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">back</a>
+        <a href="#main" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext" data-transition="fade">back</a>
         <h1>Drinking history</h1>
     </div><!-- /header -->
     
     <div role="main" class="ui-content">
-   		<ul id="historyList">
-      </ul>
+		<ul id="historyList">
+			<li>Loading ..</li>
+		</ul>
     </div><!-- /content -->
   </div><!-- /history -->
   
   <div data-role="page" id="settings">
   	<div data-role="header">
-        <a href="#main" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext" data-transition="slide" data-direction="reverse">back</a>
+        <a href="#main" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext" data-transition="fade">back</a>
         <h1>Settings</h1>
     </div><!-- /header -->
     
@@ -117,7 +118,7 @@
         	<div class="title">History</div>
           <p>This is the place where you can delete all your data. You can't recover any information once it's deleted.</p>
           <p style="text-align:center;">
-          	<a href="javascript: deleteHistory();" class="ui-btn ui-btn-inline ui-icon-alert ui-btn-icon-right" id="deleteHistory">Delete history</a>
+          	<a href="#delete_history_dialog" class="ui-btn ui-btn-inline ui-icon-alert ui-btn-icon-right" id="deleteHistory">Delete History</a>
           </p>
         </li>
       </ul>
@@ -131,7 +132,7 @@
     
     <div role="main" class="ui-content">
 		<p>If you want to add the current number of beers into your drinking history, enter a time and place in the input below.</p>
-		<p><input type="text" id="saveName" /></p>
+		<input type="text" id="saveName" placeholder="Enter an event name" />
 		<div style="text-align: right;">
 			<a href="javascript: clearCounter();" class="ui-btn ui-btn-inline">Just clear</a>
 			<a href="javascript: saveCounter();" class="ui-btn ui-btn-inline">Save</a>
@@ -139,5 +140,15 @@
     </div><!-- /content -->
   </div><!-- /dialog -->
   
+  <div data-role="dialog" id="delete_history_dialog">
+  	<div data-role="header">
+        <h1>Warning!</h1>
+    </div><!-- /header -->
+    
+    <div role="main" class="ui-content" style="text-align: center;">
+		<p>You are about to remove all your drinking history. All data will be lost and you can't recover it. <br /><br /> Are you sure?</p>
+		<a href="javascript: deleteHistory();" class="ui-btn ui-btn-inline">Delete History</a>
+    </div><!-- /content -->
+  </div><!-- /delete_history_dialog -->
 </body>
 </html>

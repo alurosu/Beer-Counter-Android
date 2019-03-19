@@ -134,9 +134,14 @@ li {
 	padding-right: 0;
 }
 
-#dialog .ui-btn-icon-notext.ui-btn-left {
+[data-role="dialog"] .ui-btn-icon-notext.ui-btn-left {
 	left: auto;
 	right: 10px;
+}
+[data-role="dialog"] p {
+	background: #fff;
+	padding: 10px;
+	border-radius: 3px;
 }
 
 #vibrationsWrap .ui-flipswitch {

@@ -127,7 +127,6 @@ function getHistory() {
 		var history = JSON.parse(localStorage.history); // read
 		var content = "";
 		
-		console.log("getHistory");
 		console.log(history);
 		
 		var addS;
@@ -135,7 +134,7 @@ function getHistory() {
 			addS = 's';
 			if (history[i].beers == 1)
 				addS = '';
-			content = '<li><div class="title">' + history[i].title + '</div> &bull; ' + history[i].beers + ' beer' + addS + ' for ' + history[i].price + '</li>' + content;
+			content = '<li><div class="title">' + history[i].title + '</div> &bull; ' + history[i].beers + ' drink' + addS + ' for ' + history[i].price + '</li>' + content;
 		}
 		
 		if (i == 0)
@@ -156,15 +155,19 @@ function saveCounter() {
 	history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : price + ' ' +  localStorage.currency});
 	localStorage.history = JSON.stringify(history); // write
 	
-	clearCounter();
+	clearCounter("#history");
 }
 
-function clearCounter() {
+function clearCounter(page) {
 	localStorage.beers = 0;
 	$('#counter').html(0);
 	updateTotal();
 	generateNotification();
-	$("#dialog").dialog("close");
+	
+	if (page)
+		$.mobile.changePage(page, { transition: "fade", changeHash: false });
+	else
+		$("#dialog").dialog("close");
 }
 
 function today() {
@@ -205,7 +208,7 @@ function playAudio(url) {
 }
 function deleteHistory() {
 	localStorage.history = JSON.stringify([]);
-	$.mobile.changePage( "#history", { transition: "slide", changeHash: false });
+	$.mobile.changePage( "#history", { transition: "fade", changeHash: false });
 }
 
 function updateTotal() {
