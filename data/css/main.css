@@ -138,10 +138,8 @@ li {
 	left: auto;
 	right: 10px;
 }
-[data-role="dialog"] p {
+[data-role="dialog"] .ui-content {
 	background: #fff;
-	padding: 10px;
-	border-radius: 3px;
 }
 
 #vibrationsWrap .ui-flipswitch {
@@ -176,9 +174,11 @@ li {
 	border: none;
 }
 .ui-header .ui-title, .ui-footer .ui-title {
-	font-weight: normal;
 	color: #fff;
 	text-overflow: clip;
+    font-weight: bold;
+    text-shadow: 0 0 1px #000;
+    font-size: 1.2em;
 }
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
 	background: url(../img/bg.png) repeat-x #fdc200;
@@ -196,11 +196,6 @@ li {
 .ui-icon-check:after, html .ui-btn.ui-checkbox-on.ui-checkbox-on:after {
 	background-color: #046d4c;
 }
-
-#myAds {
-	text-align: center;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
+.ui-btn-inline {
+	margin-right: 0;
 }
