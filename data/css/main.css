@@ -26,6 +26,7 @@ li {
 	float: right;
 	margin: 11px;
 	cursor: pointer;
+    padding: .5em;
 }
 #menu {
 	background: #e79f00;
@@ -54,10 +55,12 @@ li {
 #main {
 	height: 100%;
 	padding: 0;
+	overflow: hidden;
 }
 #main #tableWrap {
 	height: 100%;
-	padding: 0;
+	padding: 65px 0 0 0;
+	box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
@@ -99,6 +102,8 @@ li {
     padding: 5px 10px;
     font-size: 12px;
     font-weight: bold;
+	
+    box-shadow: 0px 0px 5px #aaa;
 }	
 #totalPrice span {
 	color: #046d4c;
@@ -108,13 +113,17 @@ li {
 #instructions {
 	width: 300px;
 	height: 102px;
-	margin: 0px auto auto auto;
+	margin: 0 auto 0 auto;
 	background: url(../img/quote.png) no-repeat;
 	color: white;
 	text-align: center;
 }
 #notification {
     padding: 10px 24px;
+}
+#price2drink {
+	margin: 45px auto auto auto;
+	height: 20px;
 }
 
 #historyList, #settingsList {
@@ -128,6 +137,7 @@ li {
 #historyList li .title, #settingsList li .title {
 	color: #046d4c;
 	font-weight: bold;
+    margin-bottom: 5px;
 }
 #history .ui-content, #settings .ui-content {
 	padding-left: 0;
@@ -162,6 +172,7 @@ li {
 	margin: 10px auto;
 	border-radius: 5px;
 }
+
 .priceSuggestions {
 	display: inline-block;
 }
@@ -201,4 +212,7 @@ li {
 }
 .ui-btn-inline {
 	margin-right: 0;
+}
+#main .ui-bar-inherit {
+	background: none;
 }

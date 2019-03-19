@@ -31,6 +31,9 @@
 			  </td>
 			</tr>
 		</table>
+		<div id="price2drink">
+			10 $ / drink
+		</div>
     </div><!-- /content -->
     
     <div data-role="panel" id="menu" data-position="right" data-display="overlay">
@@ -41,7 +44,7 @@
 				<li><a href="#settings" data-transition="fade">Settings</a></li>
 			
 				<li id="lastMenuItem">
-					<a href="#gopro">Donate</a>
+					<a href="https://paypal.me/alurosu" target="_blank">Donate</a>
 				</li>
 			</ul>
 		</div>
@@ -76,9 +79,9 @@
         </li>
       	<li id="sound">
         	<div class="title">Sound</div>
+			<p>Select what sound you want when counting.</p>
         	<form>
             <fieldset data-role="controlgroup" data-iconpos="right">
-                <legend>Select what sound you want when counting.</legend>
                 <input type="checkbox" name="sound1" id="checkbox-h-6a" value="">
                 <label for="checkbox-h-6a">No sound</label>
                 <input type="checkbox" name="sound2" id="checkbox-h-6b" value="data/sounds/canOpen.mp3">
@@ -95,12 +98,12 @@
 			<p>Beer Counter will automatically add up how much you spend. Below you can set how much a beer costs.</p>
 			<p>
 			<div class="ui-field-contain">
-				<label for="textinput-fc">Units:</label>
-				<input type="text" name="priceUnit" id="priceUnit" value="1.5">
+				<label for="textinput-fc">Price / drink:</label>
+				<input type="text" name="priceUnit" id="priceUnit" value="1.5" placeholder="1, 2, 5, 3.5, ...">
 			</div>
 			<div class="ui-field-contain">
 				<label for="priceCurrency">Currency:</label>
-				<input type="text" name="priceCurrency" id="priceCurrency" value="€" placeholder="€, USD, gbp ...">
+				<input type="text" name="priceCurrency" id="priceCurrency" value="€" placeholder="€, USD, gbp, ...">
 				
 				<label>&nbsp;</label>
 				<div class="priceSuggestions">
@@ -116,10 +119,10 @@
         </li>
         <li>
         	<div class="title">History</div>
-          <p>This is the place where you can delete all your data. You can't recover any information once it's deleted.</p>
-          <p style="text-align:center;">
-          	<a href="#delete_history_dialog" class="ui-btn ui-btn-inline ui-icon-alert ui-btn-icon-right" id="deleteHistory">Delete History</a>
-          </p>
+			<p>This is the place where you can delete all your data. You can't recover any information once it's deleted.</p>
+			<p style="text-align:center;">
+				<a href="#delete_history_dialog" class="ui-btn ui-btn-inline ui-icon-alert ui-btn-icon-right" id="deleteHistory">Delete History</a>
+			</p>
         </li>
       </ul>
     </div><!-- /content -->

@@ -9,16 +9,15 @@ function onDeviceReady() {
 		localStorage.sound = 'data/sounds/canOpen.mp3';
 	if (!localStorage.price)
 		localStorage.price = '1.5';
+	$('#priceUnit').val(localStorage.price);
+	
 	if (!localStorage.currency)
 		localStorage.currency = '€';
+	$("#priceCurrency").val(localStorage.currency);
+		
 	
-	if (localStorage.price) {
-		$('#priceUnit').val(localStorage.price);
-	}
-	
-	if (localStorage.currency) {
-		$("#priceCurrency").val(localStorage.currency);
-	}
+	if (!localStorage.totalPrice)
+		localStorage.totalPrice = 0;
 	
 	if (localStorage.sound) {
 		$('#sound input[value="' + localStorage.sound + '"]').prop('checked',true);
@@ -48,11 +47,10 @@ function onDeviceReady() {
 	});
 	
 	$('#priceUnit').change(function() {	
-		if ($.isNumeric($(this).val()) && $(this).val()>0)		
+		if ($.isNumeric($(this).val()) && $(this).val()>0) {	
 			localStorage.price = $(this).val();
-			else
-			$(this).val('1.5');
-		updateTotal();		
+			updateTotal();	
+		}	
 	});
 	
 	$('#sound input').on('click', function(){
@@ -67,6 +65,10 @@ function onDeviceReady() {
 		localStorage.currency = tempCurrency;
 		updateTotal();
 	});
+	
+	// other funtions
+	$('#counter').html(localStorage.beers);
+	updateTotal();
 }
 
 $(document).ready(function(e) {	
@@ -83,22 +85,15 @@ $(document).ready(function(e) {
 		$("#menu").panel("open");
 	});
 	
-	// other funtions
-	
-	$('#counter').html(localStorage.beers);
-	updateTotal();
-	
 	$('#counter').on("click",function(e) {
-		var beers;
 		if (localStorage.beers)
-			beers = parseInt(localStorage.beers) + 1;
-			else
-			beers = 1;
-			
-		console.log('beers: ' + beers);
-		localStorage.beers = beers;
-			
-		$(this).html(beers);
+			localStorage.beers = parseInt(localStorage.beers) + 1;
+		else 
+			localStorage.beers = 1;
+		
+		localStorage.totalPrice = parseFloat(localStorage.totalPrice) + parseFloat(localStorage.price);
+		
+		$(this).html(localStorage.beers);
 		updateTotal();
 		generateNotification();
 		playAudio(localStorage.sound);
@@ -127,8 +122,6 @@ function getHistory() {
 		var history = JSON.parse(localStorage.history); // read
 		var content = "";
 		
-		console.log(history);
-		
 		var addS;
 		for (i=0; i<history.length; i++) {
 			addS = 's';
@@ -150,9 +143,7 @@ function saveCounter() {
 		else
 		history = [];
 		
-	
-	var price = Math.round(localStorage.price * localStorage.beers * 100) / 100;
-	history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : price + ' ' +  localStorage.currency});
+	history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : (Math.round(localStorage.totalPrice * 100) / 100) + ' ' +  localStorage.currency});
 	localStorage.history = JSON.stringify(history); // write
 	
 	clearCounter("#history");
@@ -160,6 +151,7 @@ function saveCounter() {
 
 function clearCounter(page) {
 	localStorage.beers = 0;
+	localStorage.totalPrice = 0;
 	$('#counter').html(0);
 	updateTotal();
 	generateNotification();
@@ -177,11 +169,11 @@ function today() {
 	var yyyy = today.getFullYear();
 	
 	if(dd<10) {
-			dd='0'+dd
+		dd='0'+dd
 	}
 	
 	if(mm<10) {
-			mm='0'+mm
+		mm='0'+mm
 	} 
 	
 	return dd+'/'+mm+'/'+yyyy;
@@ -212,7 +204,7 @@ function deleteHistory() {
 }
 
 function updateTotal() {
-	var number = Math.round(localStorage.price * localStorage.beers * 100) / 100;
+	var number = Math.round(localStorage.totalPrice * 100) / 100;
 	$("#totalPrice").html("Total: <span>" + number + " </span>" + localStorage.currency);
 }
 
