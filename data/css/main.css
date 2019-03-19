@@ -118,7 +118,7 @@ li {
 }
 
 #historyList, #settingsList {
-	padding-top: 26px;
+	padding-top: 36px;
 }
 #historyList li, #settingsList li {
 	padding: 15px;
@@ -179,6 +179,9 @@ li {
     font-weight: bold;
     text-shadow: 0 0 1px #000;
     font-size: 1.2em;
+}
+.ui-header .ui-btn, .ui-footer .ui-btn {
+    margin-top: .4em;
 }
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
 	background: url(../img/bg.png) repeat-x #fdc200;
