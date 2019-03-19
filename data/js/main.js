@@ -17,9 +17,7 @@ function onDeviceReady() {
 	}
 	
 	if (localStorage.currency) {
-		$("#priceCurrency option").filter(function() {
-			return $(this).val() == localStorage.currency; 
-		}).attr('selected', true);
+		$("#priceCurrency").val(localStorage.currency);
 	}
 	
 	if (localStorage.sound) {
@@ -42,9 +40,11 @@ function onDeviceReady() {
 		}
 	});
 	
-	$('#priceCurrency').change(function() {			
-		localStorage.currency = $(this).val();
-		updateTotal();		
+	$('#priceCurrency').change(function() {
+		if ($(this).val()) {
+			localStorage.currency = $(this).val();
+			updateTotal();
+		}
 	});
 	
 	$('#priceUnit').change(function() {	
@@ -59,9 +59,14 @@ function onDeviceReady() {
 		$('#sound input').prop('checked', false).checkboxradio('refresh');
 		$(this).prop('checked',true).checkboxradio('refresh');
 		localStorage.sound = $(this).val();
-	});	
+	});
 	
-	updateTotal();
+	$('.priceSuggestions a').on('click', function(){
+		var tempCurrency = $(this).html();
+		$('#priceCurrency').val(tempCurrency);
+		localStorage.currency = tempCurrency;
+		updateTotal();
+	});
 }
 
 $(document).ready(function(e) {	
@@ -151,11 +156,7 @@ function saveCounter() {
 	history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : price + ' ' +  localStorage.currency});
 	localStorage.history = JSON.stringify(history); // write
 	
-	localStorage.beers = 0;
-	$('#counter').html(0);
-	updateTotal();
-	generateNotification();
-	$("#dialog").dialog("close");
+	clearCounter();
 }
 
 function clearCounter() {

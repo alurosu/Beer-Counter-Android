@@ -37,7 +37,7 @@
 		<div data-role="content">
 			<ul>
 				<li><a href="#history" data-transition="slide">History</a></li>
-				<li><a href="#dialog" id="openDialog">Clear counter</a></li>
+				<li><a href="#dialog" id="openDialog">Save / Clear</a></li>
 				<li><a href="#settings" data-transition="slide">Settings</a></li>
 			
 				<li id="lastMenuItem">
@@ -99,11 +99,17 @@
 			</div>
 			<div class="ui-field-contain">
 				<label for="priceCurrency">Currency:</label>
-				<select name="priceCurrency" id="priceCurrency">
-				  <option value="€">€ - Euro</option>
-				  <option value="$">$ - USD</option>
-				  <option value="£">£ - Pound</option>
-				</select>
+				<input type="text" name="priceCurrency" id="priceCurrency" value="€" placeholder="€, USD, gbp ...">
+				
+				<label>&nbsp;</label>
+				<div class="priceSuggestions">
+					<a href="#" class="ui-btn ui-btn-inline">€</a>
+					<a href="#" class="ui-btn ui-btn-inline">$</a>
+					<a href="#" class="ui-btn ui-btn-inline">£</a>
+					<a href="#" class="ui-btn ui-btn-inline">₣</a>
+					<a href="#" class="ui-btn ui-btn-inline">¥</a>
+					<a href="#" class="ui-btn ui-btn-inline">₹</a>
+				</div>
 			</div>
 			</p>
         </li>

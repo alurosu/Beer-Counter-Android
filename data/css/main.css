@@ -159,6 +159,9 @@ li {
 	margin: 10px auto;
 	border-radius: 5px;
 }
+.priceSuggestions {
+	display: inline-block;
+}
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
 	text-shadow: none;
 }
