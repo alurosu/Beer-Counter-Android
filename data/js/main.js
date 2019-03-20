@@ -152,7 +152,7 @@ function onDeviceReady() {
 	function playAudio(url) {
 		$('#instructions').append('test');
 		//url = cordova.file.applicationDirectory + '/www/' + url;
-		url = 'http://commondatastorage.googleapis.com/codeskulptor-assets/jump.ogg';
+		url = 'https://dev.alurosu.com/pourBeer.mp3';
 		var my_media = new Media(url,
 			// success callback
 			function () {
