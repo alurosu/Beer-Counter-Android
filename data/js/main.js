@@ -150,9 +150,7 @@ function onDeviceReady() {
 	});
 	
 	function playAudio(url) {
-		$('#instructions').append('test');
-		//url = cordova.file.applicationDirectory + '/www/' + url;
-		url = 'https://dev.alurosu.com/pourBeer.mp3';
+		url = cordova.file.applicationDirectory + '/www/' + url;
 		var my_media = new Media(url,
 			// success callback
 			function () {
@@ -163,9 +161,7 @@ function onDeviceReady() {
 				console.log("playAudio():Audio Error: " + err);
 			}
 		);
-		$('#instructions').append('test1');
 		my_media.play();
-		$('#instructions').append('test2');
 	}
 	
 	function countBeers() {
