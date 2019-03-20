@@ -269,13 +269,10 @@ function today() {
 	return dd+'/'+mm+'/'+yyyy;
 }
 
-function playAudio(url) {
-	url = '/assets/www/' + url;
-	
+function playAudio(url) {	
     var my_media = new Media(url,
         // success callback
         function () {
-			my_media.play();
 			alert('sound');
         },
         // error callback
@@ -283,6 +280,8 @@ function playAudio(url) {
             alert("playAudio():Audio Error: " + err);
         }
     );
+	my_media.play();
+	my_media.release();
 }
 function deleteHistory() {
 	localStorage.history = JSON.stringify([]);

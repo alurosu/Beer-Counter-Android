@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "alurosu.beer.counter"
     versionCode = "50"
-    version     = "2.0.6" >
+    version     = "2.0.7" >
 
 	<name>Beer Counter - Drinking Tool</name>
 
