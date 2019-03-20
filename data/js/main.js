@@ -151,6 +151,7 @@ function onDeviceReady() {
 	
 	function playAudio(url) {
 		url = cordova.file.applicationDirectory + '/www/' + url;
+		$('#instructions').append(url);
 		var my_media = new Media(url,
 			// success callback
 			function () {

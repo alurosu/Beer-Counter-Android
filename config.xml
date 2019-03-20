@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "alurosu.beer.counter"
     versionCode = "50"
-    version     = "2.0.15" >
+    version     = "2.0.16" >
 
 	<name>Beer Counter - Drinking Tool</name>
 
@@ -43,6 +43,8 @@
 	<preference name="fullscreen" value="true" />
 	<preference name="SplashScreenDelay" value="1000" />
 	<preference name="SplashMaintainAspectRatio" value="true" />
+	<preference name="SplashScreenSpinnerColor" value="transparent" />
+	
     <preference name="android-targetSdkVersion" value="28" />
 	
 	<preference name="phonegap-version" value="cli-8.0.0" />
