@@ -45,7 +45,7 @@
 	<preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="android-targetSdkVersion" value="28" />
 	
-	<preference name="phonegap-version" value="cli-6.0.0" />
+	<preference name="phonegap-version" value="cli-7.0.0" />
 	
 	<access origin="*" />
 	<allow-intent href="http://*/*" />
