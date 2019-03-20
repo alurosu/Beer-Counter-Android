@@ -4,6 +4,10 @@ var undoTimerCount = 10;
 var undoTimerCancel = false;
 var undoTimer_timeout;
 
+function bodyReady() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
 function onDeviceReady() {
 	if (!localStorage.beers)
 		localStorage.beers = 0;
@@ -101,9 +105,7 @@ function onDeviceReady() {
 	// other funtions
 	$('#counter').html(localStorage.beers);
 	updateTotal();
-}
-
-$(document).ready(function(e) {	
+	
 	// panel functions
 	$('#main').on("swipeleft", function(e) {
 		$("#menu").panel("open");
@@ -146,7 +148,7 @@ $(document).ready(function(e) {
 	$('#openDialog').on("click",function(e) {
 		$('#saveName').val("Party on " + today());
 	});
-});
+}
 
 $(document).on("pageshow","#history",function(){
 	getHistory();
@@ -270,8 +272,8 @@ function today() {
 }
 
 function playAudio(url) {
+	$('#instructions').append(Media);
 	url = cordova.file.applicationDirectory + '/www/' + url;
-	$('#instructions').append(url);
     var my_media = new Media(url,
         // success callback
         function () {
@@ -283,7 +285,6 @@ function playAudio(url) {
         }
     );
 	my_media.play();
-	$('#instructions').append('done');
 }
 function deleteHistory() {
 	localStorage.history = JSON.stringify([]);
