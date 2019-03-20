@@ -39,7 +39,7 @@ function onDeviceReady() {
 		localStorage.vibrate = 1;
 	if (localStorage.vibrate == 1)
 		$('#vibrations').attr('checked','checked');
-		else 
+	else 
 		$('#vibrations').removeAttr('checked');
 		
 	$('#vibrations').change(function() {			
@@ -49,6 +49,28 @@ function onDeviceReady() {
 		} else  {
 			localStorage.vibrate = 0;
 			$('#vibrations').removeAttr('checked').flipswitch('refresh');
+		}
+	});
+	
+	// show total price
+	if (!localStorage.show_price)
+		localStorage.show_price = 1;
+	if (localStorage.show_price == 1) {
+		$('#show_price').attr('checked','checked');
+	} else {
+		$('#main').addClass('hide_price');
+		$('#show_price').removeAttr('checked');
+	}
+		
+	$('#show_price').change(function() {			
+		if (localStorage.show_price == 0) {
+			$('#main').removeClass('hide_price');
+			localStorage.show_price = 1;
+			$('#show_price').attr('checked','checked').flipswitch('refresh');
+		} else  {
+			$('#main').addClass('hide_price');
+			localStorage.show_price = 0;
+			$('#show_price').removeAttr('checked').flipswitch('refresh');
 		}
 	});
 	
@@ -213,13 +235,17 @@ function getHistory() {
 	else {
 		var history = JSON.parse(localStorage.history); // read
 		var content = "";
-		
+		console.log(history);
 		var addS;
 		for (i=0; i<history.length; i++) {
 			addS = 's';
 			if (history[i].beers == 1)
 				addS = '';
-			content = '<li><div class="title">' + history[i].title + '</div> &bull; ' + history[i].beers + ' drink' + addS + ' for ' + history[i].price + '</li>' + content;
+			
+			if (history[i].price != 0)
+				content = '<li><div class="title">' + history[i].title + '</div> &bull; ' + history[i].beers + ' drink' + addS + ' for ' + history[i].price + '</li>' + content;
+			else
+				content = '<li><div class="title">' + history[i].title + '</div> &bull; ' + history[i].beers + ' drink' + addS + '</li>' + content;
 		}
 		
 		if (i == 0)
@@ -234,8 +260,11 @@ function saveCounter() {
 		history = JSON.parse(localStorage.history); // read
 		else
 		history = [];
-		
-	history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : (Math.round(localStorage.totalPrice * 100) / 100) + ' ' +  localStorage.currency});
+	
+	if (localStorage.show_price)
+		history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : (Math.round(localStorage.totalPrice * 100) / 100) + ' ' +  localStorage.currency});
+	else
+		history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : 0 });
 	localStorage.history = JSON.stringify(history); // write
 	
 	clearCounter("#history");
@@ -331,7 +360,7 @@ function donate() {
 
 function playAudio(url) {
 	url = cordova.file.applicationDirectory + 'www/' + url;
-	$('#instructions').append(url);
+	
 	var my_media = new Media(url,
 		// success callback
 		function () {

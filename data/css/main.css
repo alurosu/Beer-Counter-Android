@@ -202,11 +202,11 @@ li {
 [data-role="dialog"].ui-page-active {
 	display: flex;
 }
-#vibrationsWrap .ui-flipswitch, #toofast_warningWrap .ui-flipswitch {
+#vibrationsWrap .ui-flipswitch, #toofast_warningWrap .ui-flipswitch, #show_priceWrap .ui-flipswitch {
 	float: right;
 	background: #ccc;
 }
-#vibrationsWrap .ui-flipswitch-active, #toofast_warningWrap .ui-flipswitch-active {
+#vibrationsWrap .ui-flipswitch-active, #toofast_warningWrap .ui-flipswitch-active, #show_priceWrap .ui-flipswitch-active {
 	background: #046d4c;
 }
 
@@ -269,4 +269,13 @@ li {
 }
 #main .ui-bar-inherit {
 	background: none;
+}
+#main.hide_price {
+	padding: 0;
+}
+#main.hide_price #totalPrice, #main.hide_price #price2drink {
+	display: none;
+}
+#main.hide_price #instructions {
+	margin-bottom: auto;
 }
