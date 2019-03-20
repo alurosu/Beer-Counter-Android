@@ -276,10 +276,11 @@ function playAudio(url) {
         // success callback
         function () {
 			my_media.play();
+			alert('sound');
         },
         // error callback
         function (err) {
-            console.log("playAudio():Audio Error: " + err);
+            alert("playAudio():Audio Error: " + err);
         }
     );
 }
