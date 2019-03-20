@@ -270,7 +270,7 @@ function today() {
 }
 
 function playAudio(url) {
-	url = "/android_asset/www/" + url;
+	url = cordova.file.applicationDirectory + '/www/' + url;
 	$('#instructions').append(url);
     var my_media = new Media(url,
         // success callback
@@ -283,7 +283,6 @@ function playAudio(url) {
         }
     );
 	my_media.play();
-	my_media.release();
 	$('#instructions').append('done');
 }
 function deleteHistory() {
