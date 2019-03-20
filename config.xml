@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "alurosu.beer.counter"
     versionCode = "50"
-    version     = "2.0.3" >
+    version     = "2.0.5" >
 
 	<name>Beer Counter - Drinking Tool</name>
 
@@ -14,14 +14,6 @@
 	<author href="https://alurosu.com" email="admin@alurosu.com">
 		alurosu
 	</author>
-	
-	<preference name="orientation" value="portrait" />
-	<preference name="fullscreen" value="true" />
-	<preference name="SplashScreenDelay" value="1000" />
-	
-	<access origin="*" />
-	<allow-intent href="http://*/*" />
-	<allow-intent href="https://*/*" />
 
 	<plugin name="cordova-plugin-vibration" spec="~3.1.0"/>
 	<plugin name="cordova-plugin-media" spec="~5.0.2"/>
@@ -46,4 +38,13 @@
 		<splash src="res/screen/android/splash-port-xxhdpi.png" density="port-xxhdpi"/>
 		<splash src="res/screen/android/splash-port-xxxhdpi.png" density="port-xxxhdpi"/>
     </platform>
+	
+	<preference name="orientation" value="portrait" />
+	<preference name="fullscreen" value="true" />
+	<preference name="SplashScreenDelay" value="1000" />
+	<preference name="SplashMaintainAspectRatio" value="true" />
+	
+	<access origin="*" />
+	<allow-intent href="http://*/*" />
+	<allow-intent href="https://*/*" />
 </widget>

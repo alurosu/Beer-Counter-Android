@@ -173,10 +173,10 @@ function countBeers() {
 	updateTotal();
 	
 	generateNotification();
-	playAudio(localStorage.sound);
 	
 	if (localStorage.vibrate == 1)
 		navigator.vibrate(250);
+	playAudio(localStorage.sound);
 }
 function toofast() {
 	$("#toofast_dialog").dialog("close");
@@ -270,19 +270,18 @@ function today() {
 }
 
 function playAudio(url) {
-	url = '/android_asset/www/' + url;
+	url = '/assets/www/' + url;
 	
     var my_media = new Media(url,
         // success callback
         function () {
-            console.log("playAudio():Audio Success");
+			my_media.play();
         },
         // error callback
         function (err) {
             console.log("playAudio():Audio Error: " + err);
         }
     );
-    my_media.play();
 }
 function deleteHistory() {
 	localStorage.history = JSON.stringify([]);
