@@ -1,7 +1,13 @@
 // device APIs are available
+
+var undoTimerCount = 10;
+var undoTimerCancel = false;
+
 function onDeviceReady() {
 	if (!localStorage.beers)
 		localStorage.beers = 0;
+	if (!localStorage.lastCounterTime)
+		localStorage.lastCounterTime = 0;
 	
 	if (!localStorage.vibrate)
 		localStorage.vibrate = 1;
@@ -45,6 +51,7 @@ function onDeviceReady() {
 		if ($(this).val()) {
 			localStorage.currency = $(this).val();
 			updateTotal();
+			$('#price2drink span').html(localStorage.price + ' ' + localStorage.currency);
 		}
 	});
 	
@@ -67,6 +74,7 @@ function onDeviceReady() {
 		var tempCurrency = $(this).html();
 		$('#priceCurrency').val(tempCurrency);
 		localStorage.currency = tempCurrency;
+		$('#price2drink span').html(localStorage.price + ' ' + localStorage.currency);
 		updateTotal();
 	});
 	
@@ -94,23 +102,14 @@ $(document).ready(function(e) {
 	});
 	
 	$('#counter').on("click",function(e) {
-		if (localStorage.beers)
-			localStorage.beers = parseInt(localStorage.beers) + 1;
-		else 
-			localStorage.beers = 1;
+		var now = new Date();
+		now = now.getTime();
+		var delta = (now-localStorage.lastCounterTime)/1000;
 		
-		localStorage.totalPrice = parseFloat(localStorage.totalPrice) + parseFloat(localStorage.price);
-		
-		startUndoTimer();
-		
-		$(this).html(localStorage.beers);
-		updateTotal();
-		
-		generateNotification();
-		playAudio(localStorage.sound);
-		
-		if (localStorage.vibrate == 1)
-			navigator.notification.vibrate(250);
+		if (delta<60) {
+			$('#toofast_delta').html(parseInt(delta)+1);
+			$.mobile.changePage("#toofast_dialog", { role: "dialog" });
+		} else countBeers();
 	});
 	
 	$('#undo').on("click",function(e) {
@@ -133,12 +132,41 @@ $(document).on("pageshow","#history",function(){
 	getHistory();
 });
 
+function countBeers() {
+	var now = new Date();
+	now = now.getTime();	
+	localStorage.lastCounterTime = now;
+			
+	if (localStorage.beers)
+		localStorage.beers = parseInt(localStorage.beers) + 1;
+	else 
+		localStorage.beers = 1;
+	
+	localStorage.totalPrice = parseFloat(localStorage.totalPrice) + parseFloat(localStorage.price);
+	
+	startUndoTimer();
+	
+	$('#counter').html(localStorage.beers);
+	updateTotal();
+	
+	generateNotification();
+	playAudio(localStorage.sound);
+	
+	if (localStorage.vibrate == 1)
+		navigator.vibrate(250);
+}
+function toofast() {
+	$("#toofast_dialog").dialog("close");
+}
+function nottoofast() {
+	$("#toofast_dialog").dialog("close");
+	countBeers();
+}
+
 function startUndoTimer() {
 	$('#undo').fadeIn();
 	undoTimer();
 }
-var undoTimerCount = 5;
-var undoTimerCancel = false;
 function undoTimer() {
 	if (undoTimerCount>0 && undoTimerCancel != true) {
 		$('#undo span').html(undoTimerCount+'s');
@@ -148,7 +176,7 @@ function undoTimer() {
 			undoTimer();
 		}, 1000);
 	} else {
-		undoTimerCount = 5;
+		undoTimerCount = 10;
 		undoTimerCancel = false;
 		$('#undo').fadeOut();
 	}
@@ -219,11 +247,8 @@ function today() {
 }
 
 function playAudio(url) {
-    // Play the audio file at url
-	if (device.platform == 'Android') {
-			url = '/android_asset/www/' + url;
-	}
-		
+	url = '/android_asset/www/' + url;
+	
     var my_media = new Media(url,
         // success callback
         function () {
@@ -234,7 +259,6 @@ function playAudio(url) {
             console.log("playAudio():Audio Error: " + err);
         }
     );
-    // Play audio
     my_media.play();
 }
 function deleteHistory() {
@@ -289,4 +313,8 @@ function generateNotification() {
 					break;
 		}
 	$('#notification').html(content);
+}
+function donate() {
+	var iab = cordova.InAppBrowser;
+	iab.open('https://paypal.me/alurosu', '_system');
 }

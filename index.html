@@ -49,7 +49,7 @@
 				<li><a href="#settings" data-transition="fade">Settings</a></li>
 			
 				<li id="lastMenuItem">
-					<a href="https://paypal.me/alurosu" target="_blank">
+					<a href="javascript: donate();" target="_blank">
 						Donate
 						<div>Keep the app free. Buy me a beer.</div>
 					</a>
@@ -177,5 +177,20 @@
 			<a href="javascript: savePrice2Drink();" class="ui-btn ui-btn-inline">Save</a>
 		</div><!-- /content -->
 	</div><!-- /price2drink_dialog -->
+	
+	<div data-role="dialog" id="toofast_dialog">
+		<div data-role="header">
+			<h1>That was a fast one!</h1>
+		</div><!-- /header -->
+		
+		<div role="main" class="ui-content" style="text-align: center;">
+			<p>You added a beer <span id="toofast_delta">0</span> seconds ago.</p>
+			<br />
+			<p>Is this a different drink?</p>
+			<br />
+			<a href="javascript: toofast();" class="ui-btn ui-btn-inline">No</a>
+			<a href="javascript: nottoofast();" class="ui-btn ui-btn-inline">Yes</a>
+		</div><!-- /content -->
+	</div><!-- /toofast_dialog -->
 </body>
 </html>
