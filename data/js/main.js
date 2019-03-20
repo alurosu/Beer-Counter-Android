@@ -148,61 +148,45 @@ function onDeviceReady() {
 	$('#openDialog').on("click",function(e) {
 		$('#saveName').val("Party on " + today());
 	});
-	
-	function playAudio(url) {
-		url = cordova.file.applicationDirectory + '/www/' + url;
-		$('#instructions').append(url);
-		var my_media = new Media(url,
-			// success callback
-			function () {
-				console.log('sound');
-			},
-			// error callback
-			function (err) {
-				console.log("playAudio():Audio Error: " + err);
-			}
-		);
-		my_media.play();
-	}
-	
-	function countBeers() {
-		clearTimeout(undoTimer_timeout);
-		undoTimerCount = 10;
-		
-		var now = new Date();
-		now = now.getTime();	
-		localStorage.lastCounterTime = now;
-				
-		if (localStorage.beers)
-			localStorage.beers = parseInt(localStorage.beers) + 1;
-		else 
-			localStorage.beers = 1;
-		
-		localStorage.totalPrice = parseFloat(localStorage.totalPrice) + parseFloat(localStorage.price);
-		
-		startUndoTimer();
-		
-		$('#counter').html(localStorage.beers);
-		updateTotal();
-		
-		generateNotification();
-		
-		if (localStorage.vibrate == 1)
-			navigator.vibrate(250);
-		playAudio(localStorage.sound);
-	}
-	function toofast() {
-		$("#toofast_dialog").dialog("close");
-	}
-	function nottoofast() {
-		$("#toofast_dialog").dialog("close");
-		countBeers();
-	}
 }
 
 $(document).on("pageshow","#history",function(){
 	getHistory();
 });
+
+function countBeers() {
+	clearTimeout(undoTimer_timeout);
+	undoTimerCount = 10;
+	
+	var now = new Date();
+	now = now.getTime();	
+	localStorage.lastCounterTime = now;
+			
+	if (localStorage.beers)
+		localStorage.beers = parseInt(localStorage.beers) + 1;
+	else 
+		localStorage.beers = 1;
+	
+	localStorage.totalPrice = parseFloat(localStorage.totalPrice) + parseFloat(localStorage.price);
+	
+	startUndoTimer();
+	
+	$('#counter').html(localStorage.beers);
+	updateTotal();
+	
+	generateNotification();
+	
+	if (localStorage.vibrate == 1)
+		navigator.vibrate(250);
+	playAudio(localStorage.sound);
+}
+function toofast() {
+	$("#toofast_dialog").dialog("close");
+}
+function nottoofast() {
+	$("#toofast_dialog").dialog("close");
+	countBeers();
+}
 
 function startUndoTimer() {
 	$('#undo').fadeIn();
@@ -343,4 +327,20 @@ function generateNotification() {
 function donate() {
 	var iab = cordova.InAppBrowser;
 	iab.open('https://paypal.me/alurosu', '_system');
+}
+
+function playAudio(url) {
+	url = cordova.file.applicationDirectory + 'www/' + url;
+	$('#instructions').append(url);
+	var my_media = new Media(url,
+		// success callback
+		function () {
+			console.log('sound');
+		},
+		// error callback
+		function (err) {
+			console.log("playAudio():Audio Error: " + err);
+		}
+	);
+	my_media.play();
 }
