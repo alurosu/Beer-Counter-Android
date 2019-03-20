@@ -269,7 +269,9 @@ function today() {
 	return dd+'/'+mm+'/'+yyyy;
 }
 
-function playAudio(url) {	
+function playAudio(url) {
+	url = cordova.file.applicationDirectory + url;
+	alert(url);
     var my_media = new Media(url,
         // success callback
         function () {
