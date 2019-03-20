@@ -32,7 +32,7 @@
 			</tr>
 		</table>
 		<div id="price2drink">
-			<span>10 $</span> / drink
+			<span>-- -</span> / drink
 			<div class="edit"></div>
 		</div>
     </div><!-- /content -->
@@ -45,7 +45,10 @@
 				<li><a href="#settings" data-transition="fade">Settings</a></li>
 			
 				<li id="lastMenuItem">
-					<a href="https://paypal.me/alurosu" target="_blank">Donate</a>
+					<a href="https://paypal.me/alurosu" target="_blank">
+						Donate
+						<div>Keep the app free. Buy me a beer.</div>
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -157,5 +160,18 @@
 		<a href="javascript: deleteHistory();" class="ui-btn ui-btn-inline">Delete History</a>
     </div><!-- /content -->
   </div><!-- /delete_history_dialog -->
+  
+	<div data-role="dialog" id="price2drink_dialog">
+		<div data-role="header">
+			<h1>Price / Drink</h1>
+		</div><!-- /header -->
+		
+		<div role="main" class="ui-content" style="text-align: center;">
+			<p>How much does a Beer cost?</p>
+			<input type="text" id="price2drink_input" placeholder="00.00" />
+			<br />
+			<a href="javascript: savePrice2Drink();" class="ui-btn ui-btn-inline">Save</a>
+		</div><!-- /content -->
+	</div><!-- /price2drink_dialog -->
 </body>
 </html>

@@ -46,6 +46,11 @@ li {
 	font-weight: bold;
 	font-size: 20px;
 }
+#menu a div {
+	color: #000;
+    font-weight: normal;
+	font-size: 0.75em;
+}
 #lastMenuItem {
 	position: absolute;
 	width: 100%;
@@ -144,6 +149,16 @@ li {
     margin-left: 5px;
     opacity: 0.8;
 }
+#price2drink_dialog .ui-input-text {
+    width: auto;
+    display: inline-block;
+}
+#price2drink_input {
+	width: 5em;
+    display: inline;
+    text-align: center;
+    font-size: 2em;
+}
 #historyList, #settingsList {
 	padding-top: 36px;
 }
@@ -230,6 +245,9 @@ li {
 }
 .ui-btn-inline {
 	margin-right: 0;
+}
+.ui-dialog-contain {
+	margin-top: 30%;
 }
 #main .ui-bar-inherit {
 	background: none;

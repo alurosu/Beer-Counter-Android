@@ -10,11 +10,13 @@ function onDeviceReady() {
 	if (!localStorage.price)
 		localStorage.price = '1.5';
 	$('#priceUnit').val(localStorage.price);
+	$('#price2drink_input').val(localStorage.price);
 	
 	if (!localStorage.currency)
 		localStorage.currency = '€';
 	$("#priceCurrency").val(localStorage.currency);
-		
+	
+	$('#price2drink span').html(localStorage.price + ' ' + localStorage.currency);
 	
 	if (!localStorage.totalPrice)
 		localStorage.totalPrice = 0;
@@ -49,7 +51,9 @@ function onDeviceReady() {
 	$('#priceUnit').change(function() {	
 		if ($.isNumeric($(this).val()) && $(this).val()>0) {	
 			localStorage.price = $(this).val();
-			updateTotal();	
+			
+			$('#price2drink_input').val(localStorage.price);
+			$('#price2drink span').html(localStorage.price + ' ' + localStorage.currency);
 		}	
 	});
 	
@@ -83,6 +87,10 @@ $(document).ready(function(e) {
 	
 	$('.menuTrigger').on("click",function(e) {
 		$("#menu").panel("open");
+	});
+	
+	$('#price2drink').on("click",function(e) {
+		$.mobile.changePage("#price2drink_dialog", { role: "dialog" });
 	});
 	
 	$('#counter').on("click",function(e) {
@@ -206,6 +214,18 @@ function deleteHistory() {
 function updateTotal() {
 	var number = Math.round(localStorage.totalPrice * 100) / 100;
 	$("#totalPrice").html("Total: <span>" + number + " </span>" + localStorage.currency);
+}
+
+function savePrice2Drink() {
+	var temp = $('#price2drink_input').val();
+	if ($.isNumeric(temp) && temp>0) {	
+		localStorage.price = temp;
+		
+		$('#priceUnit').val(localStorage.price);
+		$('#price2drink span').html(localStorage.price + ' ' + localStorage.currency);
+	}
+	
+	$.mobile.changePage("#main");
 }
 
 function generateNotification() {
