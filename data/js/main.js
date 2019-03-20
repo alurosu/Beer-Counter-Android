@@ -101,17 +101,27 @@ $(document).ready(function(e) {
 		
 		localStorage.totalPrice = parseFloat(localStorage.totalPrice) + parseFloat(localStorage.price);
 		
+		startUndoTimer();
+		
 		$(this).html(localStorage.beers);
 		updateTotal();
+		
 		generateNotification();
 		playAudio(localStorage.sound);
 		
 		if (localStorage.vibrate == 1)
 			navigator.notification.vibrate(250);
 	});
+	
+	$('#undo').on("click",function(e) {
+		localStorage.beers = parseInt(localStorage.beers) - 1;
+		localStorage.totalPrice = parseFloat(localStorage.totalPrice) - parseFloat(localStorage.price);
 		
-	$('#counter').dblclick(function(e){
-		e.preventDefault();
+		$('#counter').html(localStorage.beers);
+		updateTotal();
+		
+		undoTimerCancel = true;
+		$('#undo').fadeOut(0);
 	});
 	
 	$('#openDialog').on("click",function(e) {
@@ -122,6 +132,27 @@ $(document).ready(function(e) {
 $(document).on("pageshow","#history",function(){
 	getHistory();
 });
+
+function startUndoTimer() {
+	$('#undo').fadeIn();
+	undoTimer();
+}
+var undoTimerCount = 5;
+var undoTimerCancel = false;
+function undoTimer() {
+	if (undoTimerCount>0 && undoTimerCancel != true) {
+		$('#undo span').html(undoTimerCount+'s');
+		undoTimerCount--;
+		
+		setTimeout(function() {
+			undoTimer();
+		}, 1000);
+	} else {
+		undoTimerCount = 5;
+		undoTimerCancel = false;
+		$('#undo').fadeOut();
+	}
+}
 
 function getHistory() {
 	if (!localStorage.history)

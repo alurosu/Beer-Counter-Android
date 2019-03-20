@@ -87,7 +87,19 @@ li {
 	-ms-user-select: none;
 	user-select: none;
 }
-
+#undo {
+	position: fixed;
+    right: 1em;
+    bottom: .5em;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: .8em;
+	display: none;
+    padding-top: 2em;
+}
+#undo span {
+	color: #053f2d;
+}
 .author {
 	color: #053f2d;
 	font-weight: bold;
