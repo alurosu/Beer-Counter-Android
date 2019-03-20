@@ -272,8 +272,9 @@ function today() {
 }
 
 function playAudio(url) {
-	$('#instructions').append(Media);
-	url = cordova.file.applicationDirectory + '/www/' + url;
+	$('#instructions').append('test');
+	//url = cordova.file.applicationDirectory + '/www/' + url;
+	url = 'http://commondatastorage.googleapis.com/codeskulptor-assets/jump.ogg';
     var my_media = new Media(url,
         // success callback
         function () {
@@ -284,7 +285,9 @@ function playAudio(url) {
             console.log("playAudio():Audio Error: " + err);
         }
     );
+	$('#instructions').append('test1');
 	my_media.play();
+	$('#instructions').append('test2');
 }
 function deleteHistory() {
 	localStorage.history = JSON.stringify([]);
