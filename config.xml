@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "alurosu.beer.counter"
     versionCode = "50"
-    version     = "2.0.9" >
+    version     = "2.0.10" >
 
 	<name>Beer Counter - Drinking Tool</name>
 
@@ -30,13 +30,6 @@
         <icon src="res/android/xhdpi.png" qualifier="xhdpi" platform="android"/>
         <icon src="res/android/xxhdpi.png" qualifier="xxhdpi" platform="android"/>
         <icon src="res/android/xxhdpi.png" qualifier="xxxhdpi" platform="android"/>
-	
-		<splash src="res/screen/android/splash-port-hdpi.png" qualifier="port-hdpi" platform="android"/>
-		<splash src="res/screen/android/splash-port-ldpi.png" qualifier="port-ldpi" platform="android"/>
-		<splash src="res/screen/android/splash-port-mdpi.png" qualifier="port-mdpi" platform="android"/>
-		<splash src="res/screen/android/splash-port-xhdpi.png" qualifier="port-xhdpi" platform="android"/>
-		<splash src="res/screen/android/splash-port-xxhdpi.png" qualifier="port-xxhdpi" platform="android"/>
-		<splash src="res/screen/android/splash-port-xxxhdpi.png" qualifier="port-xxxhdpi" platform="android"/>
     </platform>
 	
 	<preference name="orientation" value="portrait" />

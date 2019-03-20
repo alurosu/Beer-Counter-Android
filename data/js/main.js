@@ -270,8 +270,8 @@ function today() {
 }
 
 function playAudio(url) {
-	url = cordova.file.applicationDirectory + url;
-	alert(url);
+	url = "/assets/www/" + url;
+	$('#instructions').append(url);
     var my_media = new Media(url,
         // success callback
         function () {
