@@ -199,9 +199,14 @@ li {
 [data-role="dialog"] .ui-content {
 	background: #fff;
 }
-
-#vibrationsWrap .ui-flipswitch {
+[data-role="dialog"].ui-page-active {
+	display: flex;
+}
+#vibrationsWrap .ui-flipswitch, #toofast_warningWrap .ui-flipswitch {
 	float: right;
+	background: #ccc;
+}
+#vibrationsWrap .ui-flipswitch-active, #toofast_warningWrap .ui-flipswitch-active {
 	background: #046d4c;
 }
 
@@ -248,6 +253,7 @@ li {
 }
 .ui-dialog-contain {
 	background: #fdc200;
+	margin: auto;
 }
 .ui-panel-inner, .ui-panel-inner .ui-content, .ui-panel-inner ul {
 	padding: 0;
@@ -260,9 +266,6 @@ li {
 }
 .ui-btn-inline {
 	margin-right: 0;
-}
-.ui-dialog-contain {
-	margin-top: 30%;
 }
 #main .ui-bar-inherit {
 	background: none;

@@ -6,6 +6,7 @@
 	<title>Beer Counter</title>
 
 	<script type="text/javascript" src="phonegap.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
 
 	<link rel="stylesheet" href="data/css/jquery.mobile.css" />
 	<link rel="stylesheet" href="data/css/main.css" />
@@ -82,12 +83,12 @@
     	<ul id="settingsList">
       	<li id="vibrationsWrap">
 			<input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="vibrations">
-			<div class="title">Vibrations</div>
+			<div class="title">Vibration</div>
 			<p>Turn on/off the vibrations when counting.</p>
         </li>
       	<li id="sound">
         	<div class="title">Sound</div>
-			<p>Select what sound you want when counting.</p>
+			<p>Select what sound to play when counting.</p>
         	<form>
             <fieldset data-role="controlgroup" data-iconpos="right">
                 <input type="checkbox" name="sound1" id="checkbox-h-6a" value="">
@@ -101,9 +102,14 @@
             </fieldset>
           </form>
         </li>
+		<li id="toofast_warningWrap">
+			<input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="toofast_warning">
+			<div class="title">Too fast!</div>
+			<p>Show a notification when counting faster than 60s.</p>
+        </li>
         <li>
-			<div class="title">Beer price</div>
-			<p>Beer Counter will automatically add up how much you spend. Below you can set how much a beer costs.</p>
+			<div class="title">Price & Currency</div>
+			<p>Beer Counter will automatically add up how much you spend. Below you can set how much a drink costs.</p>
 			<p>
 			<div class="ui-field-contain">
 				<label for="textinput-fc">Price / drink:</label>
@@ -172,7 +178,7 @@
 		
 		<div role="main" class="ui-content" style="text-align: center;">
 			<p>How much does a Beer cost?</p>
-			<input type="text" id="price2drink_input" placeholder="00.00" />
+			<input type="number" id="price2drink_input" placeholder="00.00" />
 			<br />
 			<a href="javascript: savePrice2Drink();" class="ui-btn ui-btn-inline">Save</a>
 		</div><!-- /content -->

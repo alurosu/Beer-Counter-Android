@@ -2,6 +2,7 @@
 
 var undoTimerCount = 10;
 var undoTimerCancel = false;
+var undoTimer_timeout;
 
 function onDeviceReady() {
 	if (!localStorage.beers)
@@ -9,8 +10,6 @@ function onDeviceReady() {
 	if (!localStorage.lastCounterTime)
 		localStorage.lastCounterTime = 0;
 	
-	if (!localStorage.vibrate)
-		localStorage.vibrate = 1;
 	if (!localStorage.sound)
 		localStorage.sound = 'data/sounds/canOpen.mp3';
 	if (!localStorage.price)
@@ -30,13 +29,15 @@ function onDeviceReady() {
 	if (localStorage.sound) {
 		$('#sound input[value="' + localStorage.sound + '"]').prop('checked',true);
 	}
-		
+	
+	// vibrations
+	if (!localStorage.vibrate)
+		localStorage.vibrate = 1;
 	if (localStorage.vibrate == 1)
 		$('#vibrations').attr('checked','checked');
 		else 
 		$('#vibrations').removeAttr('checked');
 		
-	// settings functions
 	$('#vibrations').change(function() {			
 		if (localStorage.vibrate == 0) {
 			localStorage.vibrate = 1;
@@ -47,6 +48,25 @@ function onDeviceReady() {
 		}
 	});
 	
+	// too fast
+	if (!localStorage.toofast_warning)
+		localStorage.toofast_warning = 0;
+	if (localStorage.toofast_warning == 1)
+		$('#toofast_warning').attr('checked','checked');
+		else 
+		$('#toofast_warning').removeAttr('checked');
+	
+	$('#toofast_warning').change(function() {			
+		if (localStorage.toofast_warning == 0) {
+			localStorage.toofast_warning = 1;
+			$('#toofast_warning').attr('checked','checked').flipswitch('refresh');
+		} else  {
+			localStorage.toofast_warning = 0;
+			$('#toofast_warning').removeAttr('checked').flipswitch('refresh');
+		}
+	});
+	
+	// price currency
 	$('#priceCurrency').change(function() {
 		if ($(this).val()) {
 			localStorage.currency = $(this).val();
@@ -106,7 +126,7 @@ $(document).ready(function(e) {
 		now = now.getTime();
 		var delta = (now-localStorage.lastCounterTime)/1000;
 		
-		if (delta<60) {
+		if (delta<60 && localStorage.toofast_warning == 1) {
 			$('#toofast_delta').html(parseInt(delta)+1);
 			$.mobile.changePage("#toofast_dialog", { role: "dialog" });
 		} else countBeers();
@@ -133,6 +153,9 @@ $(document).on("pageshow","#history",function(){
 });
 
 function countBeers() {
+	clearTimeout(undoTimer_timeout);
+	undoTimerCount = 10;
+	
 	var now = new Date();
 	now = now.getTime();	
 	localStorage.lastCounterTime = now;
@@ -172,7 +195,7 @@ function undoTimer() {
 		$('#undo span').html(undoTimerCount+'s');
 		undoTimerCount--;
 		
-		setTimeout(function() {
+		undoTimer_timeout = setTimeout(function() {
 			undoTimer();
 		}, 1000);
 	} else {
@@ -284,7 +307,7 @@ function savePrice2Drink() {
 }
 
 function generateNotification() {
-	var content ='Tap the circle after each beer. <span class="author">Beer Counter</span>';
+	var content ='Tap the circle after each beer. <br /><span class="author">Beer Counter</span>';
 	if (localStorage.beers>0)
 		switch (Math.floor(Math.random() * 7)) {
 			case 0:
@@ -300,7 +323,7 @@ function generateNotification() {
 					content = 'Beauty lies in the hands of the beer holder.';
 					break;
 			case 4:
-					content = 'Tap the circle after each beer. <span class="author">Beer Counter</span>';
+					content = 'Tap the circle after each beer. <br /><span class="author">Beer Counter</span>';
 					break;
 			case 5:
 					content = 'Homer no function beer well without. <br/><span class="author">H. Simpsons</span>';
