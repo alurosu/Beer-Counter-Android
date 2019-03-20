@@ -270,20 +270,21 @@ function today() {
 }
 
 function playAudio(url) {
-	url = "/assets/www/" + url;
+	url = "/android_asset/www/" + url;
 	$('#instructions').append(url);
     var my_media = new Media(url,
         // success callback
         function () {
-			alert('sound');
+			console.log('sound');
         },
         // error callback
         function (err) {
-            alert("playAudio():Audio Error: " + err);
+            console.log("playAudio():Audio Error: " + err);
         }
     );
 	my_media.play();
 	my_media.release();
+	$('#instructions').append('done');
 }
 function deleteHistory() {
 	localStorage.history = JSON.stringify([]);
