@@ -235,7 +235,7 @@ function getHistory() {
 	else {
 		var history = JSON.parse(localStorage.history); // read
 		var content = "";
-		console.log(history);
+
 		var addS;
 		for (i=0; i<history.length; i++) {
 			addS = 's';
@@ -261,7 +261,7 @@ function saveCounter() {
 		else
 		history = [];
 	
-	if (localStorage.show_price)
+	if (localStorage.show_price != 0)
 		history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : (Math.round(localStorage.totalPrice * 100) / 100) + ' ' +  localStorage.currency});
 	else
 		history.push({'title' : $('#saveName').val(), 'beers' : localStorage.beers, 'price' : 0 });

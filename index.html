@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="data/js/main.js"></script>
 </head>
 
-<body onload="onDeviceReady()">  
+<body onload="bodyReady()">  
   <div data-role="page" id="main">
   	<div data-role="header">
 		<img src="data/img/menu.png" alt="Menu" class="menuTrigger" />
@@ -101,16 +101,6 @@
             </fieldset>
           </form>
         </li>
-		<li id="toofast_warningWrap">
-			<input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="toofast_warning">
-			<div class="title">Power drinker</div>
-			<p>Show a notification when counting faster than 60s.</p>
-        </li>
-		<li id="show_priceWrap">
-			<input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="show_price">
-			<div class="title">Don't tell me</div>
-			<p>I don't want to know. Turn on/off the total price.</p>
-        </li>
         <li>
 			<div class="title">Price & Currency</div>
 			<p>Beer Counter will automatically add up how much you spend. Below you can set how much a drink costs.</p>
@@ -134,6 +124,16 @@
 				</div>
 			</div>
 			</p>
+        </li>
+		<li id="show_priceWrap">
+			<input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="show_price">
+			<div class="title">Don't tell me</div>
+			<p>Turn on/off the total price.</p>
+        </li>
+		<li id="toofast_warningWrap">
+			<input type="checkbox" data-role="flipswitch" name="flip-checkbox-4" id="toofast_warning">
+			<div class="title">Power drinker</div>
+			<p>Show a notification when counting faster than 60s.</p>
         </li>
         <li>
         	<div class="title">History</div>
