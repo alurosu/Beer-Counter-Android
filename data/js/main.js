@@ -230,6 +230,7 @@ function undoTimer() {
 }
 
 function getHistory() {
+	$('#undo').fadeOut(0);
 	if (!localStorage.history)
 		content = '<li>Your history is empty.</li>';
 	else {
