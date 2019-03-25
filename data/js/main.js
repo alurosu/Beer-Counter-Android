@@ -356,7 +356,7 @@ function generateNotification() {
 }
 function donate() {
 	var iab = cordova.InAppBrowser;
-	iab.open('https://paypal.me/alurosu', '_system');
+	iab.open('https://alurosu.com/donate', '_system');
 }
 
 function playAudio(url) {
