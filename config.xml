@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "alurosu.beer.counter"
     versionCode = "50"
-    version     = "2.1.4" >
+    version     = "2.1.5" >
 
 	<name>Beer Counter - Drinking Tool</name>
 
@@ -19,7 +19,7 @@
 	<plugin name="cordova-plugin-media" spec="~5.0.2" source="npm"/>
 	<plugin name="cordova-plugin-inappbrowser" spec="~3.0.0"/>
 	<plugin name="cordova-plugin-whitelist" spec="~1.3.3"/>
-	
+
 	<icon src="icon.png" />
 	<platform name="android">
         <icon src="res/android/xxhdpi.png" qualifier="ldpi" platform="android"/>
@@ -29,14 +29,12 @@
         <icon src="res/android/xxhdpi.png" qualifier="xxhdpi" platform="android"/>
         <icon src="res/android/xxhdpi.png" qualifier="xxxhdpi" platform="android"/>
     </platform>
-	
+
 	<preference name="orientation" value="portrait" />
 	<preference name="fullscreen" value="false" />
-	
-    <preference name="android-targetSdkVersion" value="28" />
-	
-	<preference name="phonegap-version" value="cli-8.0.0" />
-	
+
+    <preference name="android-targetSdkVersion" value="29" />
+
 	<access origin="*" />
 	<allow-intent href="http://*/*" />
 	<allow-intent href="https://*/*" />

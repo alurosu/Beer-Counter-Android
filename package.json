@@ -1,0 +1,16 @@
+{
+  "name": "Beer Counter - Drinking Tool",
+  "version": "2.1.5",
+  "description": "https://play.google.com/store/apps/details?id=alurosu.beer.counter",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alurosu/Beer-Counter-Android"
+  },
+  "author": "alurosu",
+  "license": "ISC",
+  "homepage": "https://alurosu.com"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Beer Counter - Drinking Tool",
+  "type": "custom",
+  "integrations": {
+    "cordova": {}
+  }
+}
